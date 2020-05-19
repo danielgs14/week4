@@ -1,0 +1,46 @@
+---
+title: "Week 4: Tyding exercise"
+author: "Daniel González-Suárez"
+date: "February 19th,  2020"
+output:
+  pdf_document:
+    toc: yes
+  toc: default
+  html_document:
+    theme: united
+    toc: yes
+---
+
+# Week 4: Tidying our data
+```{r}
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE)
+```
+
+This code was written for week's 4 exercise. Required libraries were ran first.
+
+```{r, message=FALSE}
+
+library(tidyverse)
+```
+
+# Loading our data
+Data given for this exercise was assigned to MessyData
+```{r}
+MessyData <- read.csv("D:/UABC/II_Semestre/Datos_R/week4/data/CompDec2011_2015.csv", na.strings = c("missing"))
+view(MessyData)
+
+df <-sapply(MessyData,function(x)sum(is.na(x))) # to check empty values
+view(df)
+
+```
+
+# Wide to long format
+To tidy our dataframe, we should change it from wide to long format
+```{r, tidy=TRUE}
+TidyData <- pivot_longer(MessyData, cols = X119.2011:X84.2015, names_to = c("Sites", "Year"), names_sep = "\\.", values_drop_na = TRUE)
+
+view(TidyData)
+```
+
+And that's how we tidy our first dataframe. 
