@@ -2,8 +2,10 @@
 title: "week4_2"
 author: "DGS"
 date: "2/19/2020"
-output: html_document
-editor_options: 
+output:
+  pdf_document: default
+  html_document: default
+editor_options:
   chunk_output_type: console
 ---
 
